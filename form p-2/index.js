@@ -21,10 +21,10 @@ app.get('/form', (req, res) => {
 });
 
 app.get('/editdata', (req, res) => {
-    let usereditid = req.query.id;
+    let usereditid = parseInt(req.query.id);
 
     let neweditdata = studatndata.filter((val) => {
-        return val.userid == usereditid;
+        return val.userid === usereditid;
     });
     return res.render('edit', {
         editdata: neweditdata[0]
@@ -32,10 +32,10 @@ app.get('/editdata', (req, res) => {
 });
 
 app.get('/deletedata',(req,res)=>{
-    let userdeleteid = req.query.id;
+    let userdeleteid = parseInt(req.query.id);
 
     let newdeletedata = studatndata.filter((val)=>{
-        return val.userid != userdeleteid;
+        return val.userid !== userdeleteid;
     });
     studatndata = newdeletedata;
     return res.redirect('/form');
@@ -59,7 +59,7 @@ app.post('/edituser', (req, res) => {
 });
 
 app.post('/insertdata', (req, res) => {
-    let userid = req.body.userid;
+    let userid = parseInt(req.body.userid);
     let name = req.body.name;
     let email = req.body.email;
     let password = req.body.password;
