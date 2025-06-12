@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
-const bookSchema = new mongoose.Schema({
-    title:{
+const CarSchema = new mongoose.Schema({
+    model:{
         type:String,
-        require:true,
+        require:[true  , "car model is required"],
         trim:true
     },
-    author:{
+    brand:{
         type:String,
-        require:true,
+        require:[true  , "car brand is required"],
         trim:true
     },
     price:{
@@ -16,10 +16,10 @@ const bookSchema = new mongoose.Schema({
         require:true,
         min:[0,'pric must be positive']
     },
-    inStock:{
+    inElectric:{
         type:Boolean,
-        default:true
+        default:false
     }
 },{timestamps:true})
 
-export const Book = mongoose.model("Book",bookSchema)
+export const Car = mongoose.model("Car",CarSchema)
