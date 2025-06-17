@@ -6,7 +6,7 @@ function App() {
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    let res = axios.get('http://localhost:5050/user').then((response) => {
+    let res = axios.get('http://localhost:9090/user').then((response) => {
       setUser(response.data)
     }).catch((err) => {
       console.log(err);
